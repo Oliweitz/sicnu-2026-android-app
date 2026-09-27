@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 第 2 种语言：English -->
+<resources>
+    <string name="hello">Hello World!</string>
+    <string name="click_me">Click me</string>
+    <string name="clicked">I have been clicked!</string>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 第 3 种语言：Français（国旗图片 flag.png 自行下载） -->
+<resources>
+    <string name="hello">Bonjour le monde !</string>
+    <string name="click_me">Cliquez-moi</string>
+    <string name="clicked">J\'ai été cliqué !</string>
+</resources>
