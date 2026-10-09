@@ -1,5 +1,6 @@
 package sicnu.edu.cn.yangwencai2024110144.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.widget.Button
@@ -7,6 +8,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import sicnu.edu.cn.yangwencai2024110144.myapplication.advisor.AdvisorActivity
 
 /**
  * 多语言版 Hello World
@@ -62,10 +64,21 @@ class MainActivity : AppCompatActivity() {
             tvHello.text = getString(R.string.clicked)
         }
 
-        // 把三个控件依次加进根布局
+        // 通往实验二的入口（同样由代码创建）
+        val btnAdvisor = Button(this)
+        btnAdvisor.text = getString(R.string.goto_advisor)
+        btnAdvisor.layoutParams = LinearLayout.LayoutParams(dp(160), dp(60)).apply {
+            topMargin = dp(24)
+        }
+        btnAdvisor.setOnClickListener {
+            startActivity(Intent(this, AdvisorActivity::class.java))
+        }
+
+        // 把控件依次加进根布局
         rootLayout.addView(ivFlag)
         rootLayout.addView(tvHello)
         rootLayout.addView(btnClick)
+        rootLayout.addView(btnAdvisor)
 
         setContentView(rootLayout)
     }

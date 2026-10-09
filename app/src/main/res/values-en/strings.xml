@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 第 2 种语言：English -->
 <resources>
+    <!-- ==================== Lab 1: Multi-language Hello World ==================== -->
     <string name="hello">Hello World!</string>
     <string name="click_me">Click me</string>
     <string name="clicked">I have been clicked!</string>
+    <string name="goto_advisor">Go to Lab 2</string>
+
+    <!-- ==================== Lab 2: UI Code and MVC ==================== -->
+    <string name="advisor_title">UI Code and MVC</string>
+    <string name="section1_title">Section 1: Dynamic TextViews</string>
+    <string name="section2_title">Section 2: Language Adviser</string>
+    <string name="add_textview">ADD TEXTVIEW</string>
+    <string name="dynamic_item_format">This is a new textView:%1$d</string>
+    <string name="confirm">OK</string>
+    <string name="result_placeholder">Pick a language, then tap OK</string>
+    <string name="advice_format">%1$s\n%2$s</string>
 </resources>

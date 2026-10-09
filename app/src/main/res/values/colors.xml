@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- 实验二：两个功能区的底色 -->
+    <color name="section1_bg">#FFE0F2F1</color>
+    <color name="section2_bg">#FFE8F5E9</color>
 </resources>

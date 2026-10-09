@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 第 3 种语言：Français（国旗图片 flag.png 自行下载） -->
+<!-- 第 3 种语言：Français -->
 <resources>
+    <!-- ==================== TP 1 : Hello World multilingue ==================== -->
     <string name="hello">Bonjour le monde !</string>
     <string name="click_me">Cliquez-moi</string>
     <string name="clicked">J\'ai été cliqué !</string>
+    <string name="goto_advisor">Aller au TP 2</string>
+
+    <!-- ==================== TP 2 : Code UI et MVC ==================== -->
+    <string name="advisor_title">Code UI et MVC</string>
+    <string name="section1_title">Zone 1 : TextView dynamiques</string>
+    <string name="section2_title">Zone 2 : Conseiller linguistique</string>
+    <string name="add_textview">AJOUTER</string>
+    <string name="dynamic_item_format">Ceci est un nouveau textView : %1$d</string>
+    <string name="confirm">Valider</string>
+    <string name="result_placeholder">Choisissez une langue, puis validez</string>
+    <string name="advice_format">%1$s\n%2$s</string>
 </resources>

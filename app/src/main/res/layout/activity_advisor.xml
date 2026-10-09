@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    实验二界面：上下两个功能区。
+
+    区一：一个按钮 + ScrollView 嵌套 LinearLayout。
+          ScrollView 只能有一个直接子 View，所以里面必须再套一层 LinearLayout，
+          代码动态 new 出来的 TextView 全部加进这层 LinearLayout。
+
+    区二：Spinner + 确定按钮 + 结果文本框，走 MVC 模式。
+
+    本文件中所有文字一律写成 @string 引用，不出现任何字符串字面量。
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- 标题栏（主题是 NoActionBar，所以这里自己放一条） -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:title="@string/advisor_title"
+        app:titleTextColor="@color/white" />
+
+    <!-- ==================== 区一：动态添加 TextView ==================== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/section1_bg"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/section1_title"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_add_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:text="@string/add_textview" />
+
+        <!-- 滚动容器：动态生成的 TextView 会越加越多，超出屏幕就靠它滚 -->
+        <ScrollView
+            android:id="@+id/scroll_dynamic"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1">
+
+            <!-- 动态 TextView 的父容器 -->
+            <LinearLayout
+                android:id="@+id/container_dynamic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+    </LinearLayout>
+
+    <!-- 两个功能区的分界线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="?attr/colorPrimary" />
+
+    <!-- ============== 区二：语言文化顾问（MVC 模式的交互区） ============== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/section2_bg"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/section2_title"
+            android:textStyle="bold" />
+
+        <!-- 选项内容来自模型层的 Language 枚举，不是写死的数组 -->
+        <Spinner
+            android:id="@+id/spinner_language"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" />
+
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/confirm" />
+
+        <!-- 查询结果：问候语 + 文化小贴士 -->
+        <TextView
+            android:id="@+id/tv_advice"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/result_placeholder"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+</LinearLayout>

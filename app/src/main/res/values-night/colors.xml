@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    实验二：深色模式下两个功能区的底色。
+    主题是 DayNight，文字颜色会跟着系统变浅，
+    所以底色也要跟着换成深色，否则浅字落在浅底上会看不见。
+-->
+<resources>
+    <color name="section1_bg">#FF14302E</color>
+    <color name="section2_bg">#FF17301B</color>
+</resources>

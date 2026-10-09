@@ -20,6 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".advisor.AdvisorActivity"
+            android:exported="false"
+            android:label="@string/advisor_title" />
     </application>
 
 </manifest>

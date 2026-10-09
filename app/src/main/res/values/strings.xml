@@ -1,8 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 第 1 种语言：中文（默认资源） -->
 <resources>
+    <!-- ==================== 实验一：多语言 Hello World ==================== -->
     <string name="app_name" translatable="false">杨文才2024110144</string>
     <string name="hello">你好，世界！</string>
     <string name="click_me">点击我</string>
     <string name="clicked">我被点击了！</string>
+    <string name="goto_advisor">进入实验二</string>
+
+    <!-- ==================== 实验二：UI 代码与 MVC ==================== -->
+    <string name="advisor_title">UI 代码与 MVC</string>
+    <string name="section1_title">区一：动态添加 TextView</string>
+    <string name="section2_title">区二：语言文化顾问</string>
+    <string name="add_textview">添加 TextView</string>
+    <string name="dynamic_item_format">这是第 %1$d 个新的 TextView</string>
+    <string name="confirm">确定</string>
+    <string name="result_placeholder">请选择一门语言，然后点击确定</string>
+    <!-- 顾问返回结果的排版：第一行问候语，第二行小贴士 -->
+    <string name="advice_format">%1$s\n%2$s</string>
+
+    <!--
+        下面这些是"数据"，不是界面文案，因此标了 translatable="false"：
+        语言名一律用该语言自己的写法（中文、English、Français……），
+        换成任何系统语言都这么显示，否则用户反倒认不出来。
+    -->
+    <string name="lang_zh" translatable="false">中文</string>
+    <string name="lang_en" translatable="false">English</string>
+    <string name="lang_fr" translatable="false">Français</string>
+    <string name="lang_ja" translatable="false">日本語</string>
+    <string name="lang_de" translatable="false">Deutsch</string>
+
+    <!-- 顾问查出来的问候语 -->
+    <string name="greeting_zh" translatable="false">你好，世界！</string>
+    <string name="greeting_en" translatable="false">Hello, World!</string>
+    <string name="greeting_fr" translatable="false">Bonjour le monde !</string>
+    <string name="greeting_ja" translatable="false">こんにちは、世界！</string>
+    <string name="greeting_de" translatable="false">Hallo Welt!</string>
+
+    <!-- 顾问查出来的文化小贴士 -->
+    <string name="tip_zh" translatable="false">普通话有四个声调，同样的音节声调不同，意思就完全不同。</string>
+    <string name="tip_en" translatable="false">英语的问候语会随时段变化：早上说 Good morning，晚上说 Good evening。</string>
+    <string name="tip_fr" translatable="false">法语里 Salut 既能表示你好，也能表示再见，但只用在熟人之间。</string>
+    <string name="tip_ja" translatable="false">日语的问候语分早晚，早上说 おはよう，晚上说 こんばんは。</string>
+    <string name="tip_de" translatable="false">德语的名词首字母一律大写，这是它区别于英语最显眼的特征。</string>
 </resources>
