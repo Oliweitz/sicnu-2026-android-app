@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    二级界面三：用隐式 Intent 调起系统相机，拍照确认后把照片显示在 ImageView 里。
+    布局中只放 ImageView 和按钮，具体调用与结果处理都在 CameraActivity 中完成。
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/white"
+        app:title="@string/camera_title"
+        app:titleTextColor="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/camera_tip"
+            android:textSize="16sp" />
+
+        <!-- 拍到的照片按 fitCenter 完整显示，不会变形 -->
+        <ImageView
+            android:id="@+id/iv_photo"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:background="@color/section1_bg"
+            android:contentDescription="@string/camera_photo_desc"
+            android:padding="8dp"
+            android:scaleType="fitCenter" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_camera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:minWidth="160dp"
+            android:text="@string/camera_take_photo"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            app:cornerRadius="12dp" />
+    </LinearLayout>
+
+</LinearLayout>

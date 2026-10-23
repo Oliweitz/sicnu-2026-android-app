@@ -16,4 +16,44 @@
     <string name="confirm">OK</string>
     <string name="result_placeholder">Pick a language, then tap OK</string>
     <string name="advice_format">%1$s\n%2$s</string>
+
+    <!-- ==================== Lab 3: Intents and Activities ==================== -->
+    <string name="main_subtitle">Lab 3: Intents and Activities</string>
+    <string name="main_intro">Choose an experiment:</string>
+    <string name="main_btn_param">1. Pass parameters</string>
+    <string name="main_btn_result">2. Return a result</string>
+    <string name="main_btn_camera">3. Take a photo</string>
+    <string name="main_btn_stopwatch">4. Stopwatch</string>
+    <string name="main_result_placeholder">The result from Activity 2 will appear here</string>
+    <string name="main_result_format">Result from Activity 2: %1$s</string>
+
+    <string name="param_title">Pass Parameters</string>
+    <string name="param_heading">Parameters received from MainActivity</string>
+    <string name="param_sender_format">From: %1$s</string>
+    <string name="param_id_format">Student ID: %1$s</string>
+    <string name="param_message_format">Message: %1$s</string>
+    <string name="param_message">This message was passed forward with an Intent.</string>
+    <string name="value_missing">Not provided</string>
+
+    <string name="result_title">Return a Result</string>
+    <string name="result_prompt">Enter the text to return to MainActivity:</string>
+    <string name="result_hint">Type something here</string>
+    <string name="result_empty_error">The text cannot be empty</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="camera_title">Take a Photo</string>
+    <string name="camera_tip">Tap the button to launch the system camera with an implicit Intent. After you confirm the photo, it will appear here.</string>
+    <string name="camera_take_photo">Take Photo</string>
+    <string name="camera_photo_desc">Captured photo</string>
+    <string name="camera_no_app">No camera app is available</string>
+    <string name="camera_permission_denied">Camera permission was denied</string>
+    <string name="camera_failed">Could not capture the photo. Please try again.</string>
+
+    <string name="stopwatch_title">Stopwatch</string>
+    <string name="stopwatch_tip">Rotate the screen while the stopwatch is running; it keeps counting.</string>
+    <string name="stopwatch_label">Elapsed time</string>
+    <string name="stopwatch_start">Start</string>
+    <string name="stopwatch_pause">Pause</string>
+    <string name="stopwatch_reset">Reset</string>
+    <string name="stopwatch_zero">00:00</string>
 </resources>

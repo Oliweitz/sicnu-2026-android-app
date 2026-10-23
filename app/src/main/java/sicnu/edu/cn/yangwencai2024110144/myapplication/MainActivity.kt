@@ -1,88 +1,73 @@
 package sicnu.edu.cn.yangwencai2024110144.myapplication
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.Gravity
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import sicnu.edu.cn.yangwencai2024110144.myapplication.advisor.AdvisorActivity
+import sicnu.edu.cn.yangwencai2024110144.myapplication.databinding.ActivityMainBinding
+import sicnu.edu.cn.yangwencai2024110144.myapplication.lab3.CameraActivity
+import sicnu.edu.cn.yangwencai2024110144.myapplication.lab3.ParamActivity
+import sicnu.edu.cn.yangwencai2024110144.myapplication.lab3.ResultActivity
+import sicnu.edu.cn.yangwencai2024110144.myapplication.lab3.StopwatchActivity
 
 /**
- * 多语言版 Hello World
+ * 实验三：Intent 的用法与多 Activity 开发
  *
- * 一、界面不用布局文件，全部由代码创建（纯代码实现）。
- *     根布局、国旗图片、文字、按钮都在 onCreate 里 new 出来，
- *     最后 setContentView(rootLayout) 装上去。
+ * 本界面是程序入口，四个按钮对应四个二级 Activity：
+ *   1. 参数传递：显式 Intent + putExtra，二级页面读出并显示参数；
+ *   2. 返回结果：二级页面用 setResult 把输入内容带回，这里再显示；
+ *   3. 调用相机：隐式 Intent（由二级页面发出），拍照后显示照片；
+ *   4. 秒表：旋转屏幕后计时连续，演示 Activity 重建时的状态保存与恢复。
  *
- * 二、三种语言放在三套资源目录里，由系统按当前语言自动挑选：
- *     文字  res/values/strings.xml      中文（默认）
- *           res/values-en/strings.xml   英文
- *           res/values-fr/strings.xml   法文
- *     国旗  res/drawable-nodpi/flag.png       中国国旗
- *           res/drawable-en-nodpi/flag.png    英国国旗
- *           res/drawable-fr-nodpi/flag.png    法国国旗
- *     也就是说 R.drawable.flag 同一个名字，在三种语言下会解析成三面不同的国旗。
+ * 界面文字全部来自 strings.xml，代码中不写死任何显示文案。
  */
 class MainActivity : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    private lateinit var binding: ActivityMainBinding
 
-        // 根布局：竖直排列，内容整体居中，四周留点边距
-        val rootLayout = LinearLayout(this)
-        rootLayout.orientation = LinearLayout.VERTICAL
-        rootLayout.gravity = Gravity.CENTER
-        rootLayout.setPadding(dp(20), dp(20), dp(20), dp(20))
-
-        // 国旗图片：跟随系统语言自动换成对应国家的国旗
-        val ivFlag = ImageView(this)
-        ivFlag.setImageResource(R.drawable.flag)
-        ivFlag.scaleType = ImageView.ScaleType.FIT_CENTER
-        ivFlag.layoutParams = LinearLayout.LayoutParams(dp(180), dp(120))
-
-        // 问候语（宽高都用 wrap_content，这样根布局的 gravity=CENTER 才能把它居中）
-        val tvHello = TextView(this)
-        tvHello.text = getString(R.string.hello)
-        tvHello.textSize = 30f
-        tvHello.layoutParams = LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.WRAP_CONTENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT
-        ).apply {
-            topMargin = dp(20)
+    /**
+     * 接收活动二返回的结果。
+     * registerForActivityResult 取代了旧的 startActivityForResult / onActivityResult，
+     * 它在 Activity 重建后依然能收到结果，不会因为旋转屏幕而丢失。
+     */
+    private val resultLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val text = result.data?.getStringExtra(ResultActivity.EXTRA_RESULT)
+            if (!text.isNullOrBlank()) {
+                binding.tvReturnedResult.text = getString(R.string.main_result_format, text)
+            }
         }
-
-        // 按钮：点一下就把问候语换成"我被点击了！"
-        val btnClick = Button(this)
-        btnClick.text = getString(R.string.click_me)
-        btnClick.layoutParams = LinearLayout.LayoutParams(dp(160), dp(60)).apply {
-            topMargin = dp(24)
-        }
-        btnClick.setOnClickListener {
-            tvHello.text = getString(R.string.clicked)
-        }
-
-        // 通往实验二的入口（同样由代码创建）
-        val btnAdvisor = Button(this)
-        btnAdvisor.text = getString(R.string.goto_advisor)
-        btnAdvisor.layoutParams = LinearLayout.LayoutParams(dp(160), dp(60)).apply {
-            topMargin = dp(24)
-        }
-        btnAdvisor.setOnClickListener {
-            startActivity(Intent(this, AdvisorActivity::class.java))
-        }
-
-        // 把控件依次加进根布局
-        rootLayout.addView(ivFlag)
-        rootLayout.addView(tvHello)
-        rootLayout.addView(btnClick)
-        rootLayout.addView(btnAdvisor)
-
-        setContentView(rootLayout)
     }
 
-    /** px 和 dp 的换算，让控件在不同分辨率的手机上一样大 */
-    private fun dp(value: Int): Int = (value * resources.displayMetrics.density).toInt()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        // 1. 显式 Intent：指明要启动哪个 Activity，并用 extra 正向传参
+        binding.btnParam.setOnClickListener {
+            val intent = Intent(this, ParamActivity::class.java).apply {
+                putExtra(ParamActivity.EXTRA_SENDER, getString(R.string.student_name))
+                putExtra(ParamActivity.EXTRA_STUDENT_ID, getString(R.string.student_id))
+                putExtra(ParamActivity.EXTRA_MESSAGE, getString(R.string.param_message))
+            }
+            startActivity(intent)
+        }
+
+        // 2. 带着“期待结果”的方式启动，结果由上面的 resultLauncher 接收
+        binding.btnResult.setOnClickListener {
+            resultLauncher.launch(Intent(this, ResultActivity::class.java))
+        }
+
+        // 3. 相机与 4. 秒表都由对应的二级 Activity 自己完成
+        binding.btnCamera.setOnClickListener {
+            startActivity(Intent(this, CameraActivity::class.java))
+        }
+        binding.btnStopwatch.setOnClickListener {
+            startActivity(Intent(this, StopwatchActivity::class.java))
+        }
+    }
 }

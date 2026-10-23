@@ -43,4 +43,54 @@
     <string name="tip_fr" translatable="false">法语里 Salut 既能表示你好，也能表示再见，但只用在熟人之间。</string>
     <string name="tip_ja" translatable="false">日语的问候语分早晚，早上说 おはよう，晚上说 こんばんは。</string>
     <string name="tip_de" translatable="false">德语的名词首字母一律大写，这是它区别于英语最显眼的特征。</string>
+
+    <!-- ==================== 实验三：Intent 与多 Activity ==================== -->
+    <!-- 姓名和学号是数据，不随语言变化 -->
+    <string name="student_name" translatable="false">杨文才</string>
+    <string name="student_id" translatable="false">2024110144</string>
+
+    <!-- 主界面 -->
+    <string name="main_subtitle">实验三：Intent 与 Activity</string>
+    <string name="main_intro">选择要打开的实验项目：</string>
+    <string name="main_btn_param">1. 正向传参</string>
+    <string name="main_btn_result">2. 返回结果</string>
+    <string name="main_btn_camera">3. 调用相机</string>
+    <string name="main_btn_stopwatch">4. 秒表</string>
+    <string name="main_result_placeholder">活动二返回的内容会显示在这里</string>
+    <string name="main_result_format">活动二返回的内容：%1$s</string>
+
+    <!-- 二级界面一：正向传参 -->
+    <string name="param_title">正向传参</string>
+    <string name="param_heading">MainActivity 传来的参数</string>
+    <string name="param_sender_format">发送方：%1$s</string>
+    <string name="param_id_format">学号：%1$s</string>
+    <string name="param_message_format">消息：%1$s</string>
+    <string name="param_message">这是通过 Intent 正向传递的消息，收到后显示在本页面。</string>
+    <string name="value_missing">未提供</string>
+
+    <!-- 二级界面二：返回结果 -->
+    <string name="result_title">返回结果</string>
+    <string name="result_prompt">请输入要返回给 MainActivity 的内容：</string>
+    <string name="result_hint">在这里输入内容</string>
+    <string name="result_empty_error">内容不能为空</string>
+    <string name="cancel">取消</string>
+
+    <!-- 二级界面三：调用相机 -->
+    <string name="camera_title">调用相机</string>
+    <string name="camera_tip">点击下面的按钮，通过隐式 Intent 启动系统相机。拍照并确认后，照片会显示在这里。</string>
+    <string name="camera_take_photo">拍照</string>
+    <string name="camera_photo_desc">拍摄的照片</string>
+    <string name="camera_no_app">没有找到可用的相机应用</string>
+    <string name="camera_permission_denied">没有相机权限，无法拍照</string>
+    <string name="camera_failed">拍照失败，请重试</string>
+
+    <!-- 二级界面四：秒表 -->
+    <string name="stopwatch_title">秒表</string>
+    <string name="stopwatch_tip">开始计时后旋转屏幕，计时会连续进行。</string>
+    <string name="stopwatch_label">已用时间</string>
+    <string name="stopwatch_start">开始</string>
+    <string name="stopwatch_pause">暂停</string>
+    <string name="stopwatch_reset">重置</string>
+    <string name="stopwatch_zero">00:00</string>
+    <string name="chronometer_format" translatable="false">%1$s</string>
 </resources>

@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- 实验三（3）：调用系统相机需要 CAMERA 权限 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <!--
+        Android 11 起有包可见性限制：不声明要查询的动作，
+        resolveActivity() 可能返回 null，导致明明有相机却提示没有相机应用。
+    -->
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+    </queries>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,6 +27,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
 
+        <!-- 主界面：应用标题就是姓名 + 学号 -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -21,10 +38,30 @@
             </intent-filter>
         </activity>
 
+        <!-- 四个二级 Activity：都不对外导出 -->
         <activity
-            android:name=".advisor.AdvisorActivity"
+            android:name=".lab3.ParamActivity"
             android:exported="false"
-            android:label="@string/advisor_title" />
+            android:label="@string/param_title"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".lab3.ResultActivity"
+            android:exported="false"
+            android:label="@string/result_title"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".lab3.CameraActivity"
+            android:exported="false"
+            android:label="@string/camera_title"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".lab3.StopwatchActivity"
+            android:exported="false"
+            android:label="@string/stopwatch_title"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>
