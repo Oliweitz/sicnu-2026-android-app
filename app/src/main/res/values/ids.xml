@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    牌桌里的 16 张牌是代码动态创建的。
+    这里给它们一组固定 ID，UI 测试才能稳定地定位“第几张牌”。
+-->
+<resources>
+    <item name="card_1" type="id" />
+    <item name="card_2" type="id" />
+    <item name="card_3" type="id" />
+    <item name="card_4" type="id" />
+    <item name="card_5" type="id" />
+    <item name="card_6" type="id" />
+    <item name="card_7" type="id" />
+    <item name="card_8" type="id" />
+    <item name="card_9" type="id" />
+    <item name="card_10" type="id" />
+    <item name="card_11" type="id" />
+    <item name="card_12" type="id" />
+    <item name="card_13" type="id" />
+    <item name="card_14" type="id" />
+    <item name="card_15" type="id" />
+    <item name="card_16" type="id" />
+</resources>

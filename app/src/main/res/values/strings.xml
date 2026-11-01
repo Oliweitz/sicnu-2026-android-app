@@ -93,4 +93,68 @@
     <string name="stopwatch_reset">重置</string>
     <string name="stopwatch_zero">00:00</string>
     <string name="chronometer_format" translatable="false">%1$s</string>
+
+    <!-- ==================== 实验四：翻牌游戏应用 ==================== -->
+    <!-- 默认个人资料：姓名、学号沿用实验三的字符串；电话和邮箱仅为展示用 -->
+    <string name="default_phone" translatable="false">13800138000</string>
+    <string name="default_email" translatable="false">2024110144@sicnu.edu.cn</string>
+
+    <!-- 主界面：玩家信息 -->
+    <string name="avatar_desc">玩家头像</string>
+    <string name="label_name">姓名：</string>
+    <string name="label_gender">性别：</string>
+    <string name="label_student_id">学号：</string>
+    <string name="label_phone">电话：</string>
+    <string name="label_email">邮件地址：</string>
+    <string name="label_hobbies">爱好：</string>
+    <string name="label_high_score">游戏最高分：</string>
+    <string name="score_points_format">%1$d 分</string>
+    <string name="edit_profile">修改个人信息</string>
+    <string name="open_card_game">翻牌游戏</string>
+    <string name="list_separator" translatable="false">、</string>
+    <string name="hobbies_none">未选择</string>
+
+    <!-- 性别与爱好 -->
+    <string name="gender_male">男</string>
+    <string name="gender_female">女</string>
+    <string name="gender_title">性别</string>
+    <string name="hobbies_title">爱好</string>
+    <string name="hobby_travel">旅游</string>
+    <string name="hobby_reading">阅读</string>
+    <string name="hobby_game">游戏</string>
+    <string name="hobby_shopping">购物</string>
+
+    <!-- 信息修改界面 -->
+    <string name="person_info_title">信息修改</string>
+    <string name="avatar_change">更换头像</string>
+    <string name="avatar_tip">点击相机按钮，从相册选择新头像</string>
+    <string name="name_hint">姓名</string>
+    <string name="student_id_hint">学号</string>
+    <string name="phone_hint">电话号码</string>
+    <string name="email_hint">电子邮件地址</string>
+    <string name="save">保存</string>
+    <string name="profile_saved">个人信息已保存</string>
+    <string name="error_name_required">请输入姓名</string>
+    <string name="error_student_id_required">请输入学号</string>
+    <string name="error_phone_required">请输入电话号码</string>
+    <string name="error_phone_invalid">电话号码格式不正确</string>
+    <string name="error_email_required">请输入电子邮件地址</string>
+    <string name="error_email_invalid">电子邮件地址格式不正确</string>
+
+    <!-- 翻牌游戏界面 -->
+    <string name="card_game_title">翻牌游戏</string>
+    <string name="game_hint">点击两张牌：点数相同或花色相同就能配对</string>
+    <string name="score_label">得分</string>
+    <string name="score_zero" translatable="false">0</string>
+    <string name="score_value_format" translatable="false">%1$d</string>
+    <string name="reset_game">重置游戏</string>
+    <string name="exit">退出</string>
+    <string name="game_over_title">游戏结束</string>
+    <string name="game_over_message">本局得分：%1$d</string>
+    <string name="play_again">再来一局</string>
+
+    <!-- 牌的读屏描述：%1$d 是第几张，%2$s 是牌面（花色 + 点数） -->
+    <string name="card_desc_back">第 %1$d 张牌，未翻开</string>
+    <string name="card_desc_chosen">第 %1$d 张牌，%2$s，已翻开</string>
+    <string name="card_desc_matched">第 %1$d 张牌，%2$s，已配对</string>
 </resources>

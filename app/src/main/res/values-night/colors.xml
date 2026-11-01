@@ -7,4 +7,12 @@
 <resources>
     <color name="section1_bg">#FF14302E</color>
     <color name="section2_bg">#FF17301B</color>
+
+    <!-- 实验四：深色模式下的界面底色与文字颜色 -->
+    <color name="screen_bg">#FF12141C</color>
+    <color name="card_surface">#FF1E2230</color>
+    <color name="text_primary">#FFF2F4FA</color>
+    <color name="text_secondary">#FFA8AEC1</color>
+    <color name="divider">#FF2C3245</color>
+    <color name="avatar_bg">#FF252B40</color>
 </resources>

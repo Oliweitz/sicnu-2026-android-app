@@ -1,22 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- 实验三（3）：调用系统相机需要 CAMERA 权限 -->
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="false" />
-
     <!--
-        Android 11 起有包可见性限制：不声明要查询的动作，
-        resolveActivity() 可能返回 null，导致明明有相机却提示没有相机应用。
+        实验四：翻牌游戏应用，共 3 个 Activity。
+        头像通过系统文档选择器获取，不需要申请存储或相机权限。
     -->
-    <queries>
-        <intent>
-            <action android:name="android.media.action.IMAGE_CAPTURE" />
-        </intent>
-    </queries>
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -38,29 +26,19 @@
             </intent-filter>
         </activity>
 
-        <!-- 四个二级 Activity：都不对外导出 -->
+        <!-- 二级界面一：信息修改 -->
         <activity
-            android:name=".lab3.ParamActivity"
+            android:name=".lab4.PersonInfoActivity"
             android:exported="false"
-            android:label="@string/param_title"
-            android:parentActivityName=".MainActivity" />
+            android:label="@string/person_info_title"
+            android:parentActivityName=".MainActivity"
+            android:windowSoftInputMode="adjustResize" />
 
+        <!-- 二级界面二：翻牌游戏 -->
         <activity
-            android:name=".lab3.ResultActivity"
+            android:name=".lab4.CardGameActivity"
             android:exported="false"
-            android:label="@string/result_title"
-            android:parentActivityName=".MainActivity" />
-
-        <activity
-            android:name=".lab3.CameraActivity"
-            android:exported="false"
-            android:label="@string/camera_title"
-            android:parentActivityName=".MainActivity" />
-
-        <activity
-            android:name=".lab3.StopwatchActivity"
-            android:exported="false"
-            android:label="@string/stopwatch_title"
+            android:label="@string/card_game_title"
             android:parentActivityName=".MainActivity" />
     </application>
 

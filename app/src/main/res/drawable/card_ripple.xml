@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 牌面的水波纹：边界裁成圆角，点击时不会溢出纸牌 -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/card_ripple">
+    <item android:id="@android:id/mask">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white" />
+            <corners android:radius="12dp" />
+        </shape>
+    </item>
+</ripple>
