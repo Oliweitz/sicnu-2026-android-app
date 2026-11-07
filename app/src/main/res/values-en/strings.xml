@@ -56,4 +56,10 @@
     <string name="stopwatch_pause">Pause</string>
     <string name="stopwatch_reset">Reset</string>
     <string name="stopwatch_zero">00:00</string>
+
+    <!-- ==================== Lab 5: menus and dialogs ==================== -->
+    <string name="game_hint">Flip three cards at a time: they match when all three ranks are the same</string>
+    <string name="menu_about">About</string>
+    <string name="about_title">About this app</string>
+    <string name="about_message">App: %1$s\nAuthor: %2$s\nStudent ID: %3$s\n\nLab 5: a three-card matching game built with RecyclerView, menus and dialogs, following the MVC pattern.</string>
 </resources>

@@ -52,9 +52,12 @@ class CardGameController(
         }
     }
 
-    /** 重新开始一局：换一副新牌，分数归零，清空游戏结束状态。 */
+    /**
+     * 重新开始一局：由 Model 自己重新发牌并清零分数，
+     * 这样“重置游戏”和“再来一局”走的是同一套规则。
+     */
     fun startNewGame() {
-        model = modelFactory()
+        model.reset()
         isGameOver = false
         render()
     }
@@ -75,7 +78,7 @@ class CardGameController(
     }
 
     companion object {
-        /** 4 × 4 的牌桌，一局共 16 张牌。 */
-        const val DEFAULT_CARD_COUNT = 16
+        /** 竖屏默认 24 张牌；横屏由 Activity 按资源换成更少的牌数。 */
+        const val DEFAULT_CARD_COUNT = CardMatchingGame.DEFAULT_CARD_COUNT
     }
 }

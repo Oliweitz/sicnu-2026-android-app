@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    横屏屏幕高度有限，一局改为 12 张牌（4 组三张牌），排成一行，
+    保证所有牌都能完整显示，不需要上下滚动。
+    旋转屏幕时 Activity 会重新创建，从而按当前方向读取不同的牌数。
+-->
+<resources>
+    <integer name="game_card_count">12</integer>
+    <integer name="game_grid_span_count">12</integer>
+</resources>
