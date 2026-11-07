@@ -143,7 +143,7 @@
 
     <!-- 翻牌游戏界面 -->
     <string name="card_game_title">翻牌游戏</string>
-    <string name="game_hint">点击两张牌：点数相同或花色相同就能配对</string>
+    <string name="game_hint">每次翻开三张牌：三张点数相同就能配对</string>
     <string name="score_label">得分</string>
     <string name="score_zero" translatable="false">0</string>
     <string name="score_value_format" translatable="false">%1$d</string>
@@ -157,4 +157,10 @@
     <string name="card_desc_back">第 %1$d 张牌，未翻开</string>
     <string name="card_desc_chosen">第 %1$d 张牌，%2$s，已翻开</string>
     <string name="card_desc_matched">第 %1$d 张牌，%2$s，已配对</string>
+
+    <!-- ==================== 实验五：菜单与对话框 ==================== -->
+    <string name="menu_about">关于</string>
+    <string name="about_title">关于本应用</string>
+    <!-- %1$s 应用名称，%2$s 姓名，%3$s 学号 -->
+    <string name="about_message">应用名称：%1$s\n作者：%2$s\n学号：%3$s\n\n实验五：使用 RecyclerView 实现三张牌配对游戏，并加入菜单、对话框与 MVC 结构。</string>
 </resources>

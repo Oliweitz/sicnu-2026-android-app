@@ -3,6 +3,7 @@ package sicnu.edu.cn.yangwencai2024110144.myapplication.lab4
 import android.content.Context
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.replaceText
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -75,6 +76,14 @@ class MainActivityTest {
         onView(withId(R.id.tv_name_value)).check(matches(withText("杨小才")))
         onView(withId(R.id.tv_phone_value)).check(matches(withText("13900139000")))
         onView(withId(R.id.tv_email_value)).check(matches(withText("xiaocai@example.com")))
+    }
+
+    @Test
+    fun aboutMenuShowsTheAboutDialog() {
+        openActionBarOverflowOrOptionsMenu(context)
+        onView(withText(context.getString(R.string.menu_about))).perform(click())
+
+        onView(withText(context.getString(R.string.about_title))).check(matches(isDisplayed()))
     }
 
     @Test

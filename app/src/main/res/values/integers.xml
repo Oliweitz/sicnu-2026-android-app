@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    竖屏：24 张牌，每行 4 张，共 6 行。
+    横屏覆盖值见 values-land/integers.xml。
+-->
+<resources>
+    <integer name="game_card_count">24</integer>
+    <integer name="game_grid_span_count">4</integer>
+</resources>

@@ -14,4 +14,7 @@ interface CardGameModel {
     fun cardAtIndex(index: Int): Card
 
     fun chooseCardAtIndex(index: Int)
+
+    /** 重新发牌并清零分数，用于“重置游戏”和“再来一局”。 */
+    fun reset()
 }

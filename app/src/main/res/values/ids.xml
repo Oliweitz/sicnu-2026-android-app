@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    牌桌里的 16 张牌是代码动态创建的。
+    牌桌里的牌是由 RecyclerView 的适配器动态绑定的。
     这里给它们一组固定 ID，UI 测试才能稳定地定位“第几张牌”。
 -->
 <resources>
@@ -20,4 +20,12 @@
     <item name="card_14" type="id" />
     <item name="card_15" type="id" />
     <item name="card_16" type="id" />
+    <item name="card_17" type="id" />
+    <item name="card_18" type="id" />
+    <item name="card_19" type="id" />
+    <item name="card_20" type="id" />
+    <item name="card_21" type="id" />
+    <item name="card_22" type="id" />
+    <item name="card_23" type="id" />
+    <item name="card_24" type="id" />
 </resources>

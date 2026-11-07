@@ -56,4 +56,10 @@
     <string name="stopwatch_pause">Pause</string>
     <string name="stopwatch_reset">Réinitialiser</string>
     <string name="stopwatch_zero">00:00</string>
+
+    <!-- ==================== TP 5 : menus et boîtes de dialogue ==================== -->
+    <string name="game_hint">Retournez trois cartes à la fois : elles correspondent si les trois ont la même valeur</string>
+    <string name="menu_about">À propos</string>
+    <string name="about_title">À propos de l\'application</string>
+    <string name="about_message">Application : %1$s\nAuteur : %2$s\nNuméro d\'étudiant : %3$s\n\nTP 5 : jeu de triplets réalisé avec RecyclerView, menus et boîtes de dialogue, selon le modèle MVC.</string>
 </resources>

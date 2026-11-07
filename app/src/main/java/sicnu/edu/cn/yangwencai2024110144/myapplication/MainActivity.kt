@@ -2,7 +2,10 @@ package sicnu.edu.cn.yangwencai2024110144.myapplication
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import sicnu.edu.cn.yangwencai2024110144.myapplication.databinding.ActivityMainBinding
 import sicnu.edu.cn.yangwencai2024110144.myapplication.lab4.CardGameActivity
 import sicnu.edu.cn.yangwencai2024110144.myapplication.lab4.PersonInfoActivity
@@ -30,12 +33,46 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // 把布局里的 MaterialToolbar 交给系统，选项菜单才能显示在右上角。
+        setSupportActionBar(binding.toolbar)
+
         binding.btnEditProfile.setOnClickListener {
             startActivity(Intent(this, PersonInfoActivity::class.java))
         }
         binding.btnOpenGame.setOnClickListener {
             startActivity(Intent(this, CardGameActivity::class.java))
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_about -> {
+                showAboutDialog()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    /** 菜单里的“关于”对话框；文案全部来自字符串资源。 */
+    private fun showAboutDialog() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.about_title)
+            .setMessage(
+                getString(
+                    R.string.about_message,
+                    getString(R.string.app_name),
+                    getString(R.string.student_name),
+                    getString(R.string.student_id)
+                )
+            )
+            .setPositiveButton(R.string.confirm, null)
+            .show()
     }
 
     override fun onResume() {
