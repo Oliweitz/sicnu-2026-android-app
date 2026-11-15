@@ -4,10 +4,44 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 /**
- * Card 的三张牌配对规则单元测试。
+ * Card 的两张牌 / 三张牌配对规则单元测试。
  * Card 不依赖 Android，因此这些测试在本地 JVM 上直接运行。
  */
 class CardTest {
+
+    @Test
+    fun twoCardsWithSameRankMatchWhenPlayingPairs() {
+        val heartAce = Card(suit = "♥", rank = "A")
+        val spadeAce = Card(suit = "♠", rank = "A")
+
+        assertEquals(
+            Card.RANK_MATCH_SCORE,
+            heartAce.match(arrayOf(spadeAce), cardsInMatch = 2)
+        )
+    }
+
+    @Test
+    fun twoCardsWithDifferentRanksDoNotMatchWhenPlayingPairs() {
+        val heartAce = Card(suit = "♥", rank = "A")
+        val diamondKing = Card(suit = "♦", rank = "K")
+
+        assertEquals(
+            Card.NO_MATCH_SCORE,
+            heartAce.match(arrayOf(diamondKing), cardsInMatch = 2)
+        )
+    }
+
+    @Test
+    fun pairRuleRejectsThreeCards() {
+        val heartAce = Card(suit = "♥", rank = "A")
+        val diamondAce = Card(suit = "♦", rank = "A")
+        val spadeAce = Card(suit = "♠", rank = "A")
+
+        assertEquals(
+            Card.NO_MATCH_SCORE,
+            heartAce.match(arrayOf(diamondAce, spadeAce), cardsInMatch = 2)
+        )
+    }
 
     @Test
     fun threeCardsWithSameRankMatch() {
@@ -46,7 +80,7 @@ class CardTest {
     }
 
     @Test
-    fun onlyTwoCardsDoNotMatch() {
+    fun onlyTwoCardsDoNotMatchInThreeCardGame() {
         val heartAce = Card(suit = "♥", rank = "A")
         val spadeAce = Card(suit = "♠", rank = "A")
 

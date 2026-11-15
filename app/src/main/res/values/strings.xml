@@ -162,5 +162,28 @@
     <string name="menu_about">关于</string>
     <string name="about_title">关于本应用</string>
     <!-- %1$s 应用名称，%2$s 姓名，%3$s 学号 -->
-    <string name="about_message">应用名称：%1$s\n作者：%2$s\n学号：%3$s\n\n实验五：使用 RecyclerView 实现三张牌配对游戏，并加入菜单、对话框与 MVC 结构。</string>
+    <string name="about_message">应用名称：%1$s\n作者：%2$s\n学号：%3$s\n\n实验六：使用 Fragment 重构应用，并通过对象序列化保存个人信息与游戏历史。</string>
+
+    <!-- ==================== 实验六：Fragment 与对象序列化 ==================== -->
+    <string name="tab_profile">个人信息</string>
+    <string name="tab_two_cards">2 张牌</string>
+    <string name="tab_three_cards">3 张牌</string>
+
+    <string name="label_high_score_two">2 张牌最高分：</string>
+    <string name="label_high_score_three">3 张牌最高分：</string>
+    <string name="profile_storage_tip">个人信息和游戏历史都会保存到本地文件，退出应用后重新打开仍可恢复。</string>
+    <string name="edit_profile_title">编辑个人信息</string>
+
+    <string name="game_two_hint">每次翻开 2 张牌：点数相同就能配对</string>
+    <string name="game_three_hint">每次翻开 3 张牌：三张点数相同就能配对</string>
+    <string name="history_button">历史记录</string>
+    <string name="history_title_two">2 张牌历史记录</string>
+    <string name="history_title_three">3 张牌历史记录</string>
+    <string name="history_empty">还没有完成过一局。结束一局后，成绩会自动保存到本地文件。</string>
+    <string name="history_summary_format">历史最高 %1$d 分 · 已玩 %2$d 局</string>
+    <string name="history_summary_empty">暂无历史记录</string>
+    <!-- %1$s 日期时间，%2$d 得分，%3$d 牌数 -->
+    <string name="history_record_format">%1$s · %2$d 分 · %3$d 张牌</string>
+    <string name="history_close">关闭</string>
+    <string name="game_over_new_record">新纪录！本局得分：%1$d</string>
 </resources>

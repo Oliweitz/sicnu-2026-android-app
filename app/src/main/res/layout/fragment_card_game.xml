@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    三张牌翻牌游戏界面：RecyclerView 牌桌 + 底部得分、重置、退出。
-    牌数由资源决定（竖屏 24 张、横屏 12 张），
-    牌面由 CardAdapter 绑定，规则和状态全部在 Model/Controller 中。
+    第 2、3 个 Fragment 共用的翻牌游戏界面：
+    提示 + RecyclerView 牌桌 + 底部得分、历史记录、重置。
+    牌数、每行列数和“几张牌配对”由具体 Fragment 从资源里读取，
+    因此同一个布局可以同时用于 2 张牌和 3 张牌玩法。
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,30 +11,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/screen_bg"
-    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:navigationIcon="@drawable/ic_arrow_back"
-        app:navigationIconTint="@color/white"
-        app:title="@string/card_game_title"
-        app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-        app:titleTextColor="@color/white" />
-
     <TextView
+        android:id="@+id/tv_game_hint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="20dp"
         android:gravity="center"
-        android:text="@string/game_hint"
         android:textColor="@color/text_secondary"
-        android:textSize="13sp" />
+        android:textSize="13sp"
+        tools:text="每次翻开 2 张牌：点数相同就能配对" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/card_grid"
@@ -56,61 +46,76 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingStart="20dp"
-        android:paddingTop="12dp"
+        android:paddingTop="10dp"
         android:paddingEnd="16dp"
-        android:paddingBottom="12dp">
+        android:paddingBottom="10dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:orientation="vertical">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/score_label"
-                android:textColor="@color/text_secondary"
-                android:textSize="12sp" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/score_label"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/score_zero"
+                    android:textColor="@color/brand_primary"
+                    android:textSize="24sp"
+                    tools:text="14" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/tv_score"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_history_summary"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/score_zero"
-                android:textColor="@color/brand_primary"
-                android:textSize="26sp"
-                tools:text="14" />
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/history_summary_empty"
+                android:textColor="@color/text_secondary"
+                android:textSize="11sp"
+                tools:text="历史最高 18 分 · 已玩 3 局" />
         </LinearLayout>
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
-
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_reset"
+            android:id="@+id/btn_history"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="44dp"
             android:minWidth="0dp"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:text="@string/reset_game"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:text="@string/history_button"
             android:textAllCaps="false"
             android:textSize="13sp"
             app:cornerRadius="12dp" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_exit"
+            android:id="@+id/btn_reset"
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="wrap_content"
             android:layout_height="44dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="8dp"
             android:minWidth="0dp"
-            android:paddingStart="18dp"
-            android:paddingEnd="18dp"
-            android:text="@string/exit"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@string/reset_game"
             android:textAllCaps="false"
             android:textSize="13sp"
             app:cornerRadius="12dp" />

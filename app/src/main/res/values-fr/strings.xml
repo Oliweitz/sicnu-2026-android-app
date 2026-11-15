@@ -61,5 +61,78 @@
     <string name="game_hint">Retournez trois cartes à la fois : elles correspondent si les trois ont la même valeur</string>
     <string name="menu_about">À propos</string>
     <string name="about_title">À propos de l\'application</string>
-    <string name="about_message">Application : %1$s\nAuteur : %2$s\nNuméro d\'étudiant : %3$s\n\nTP 5 : jeu de triplets réalisé avec RecyclerView, menus et boîtes de dialogue, selon le modèle MVC.</string>
+    <string name="about_message">Application : %1$s\nAuteur : %2$s\nNuméro d\'étudiant : %3$s\n\nTP 6 : refonte en plusieurs fragments avec sauvegarde du profil et de l\'historique par sérialisation d\'objets.</string>
+
+    <!-- ==================== TP 6 : fragments et sérialisation d\'objets ==================== -->
+    <string name="tab_profile">Profil</string>
+    <string name="tab_two_cards">2 cartes</string>
+    <string name="tab_three_cards">3 cartes</string>
+
+    <string name="label_high_score_two">Record 2 cartes :</string>
+    <string name="label_high_score_three">Record 3 cartes :</string>
+    <string name="profile_storage_tip">Le profil et l\'historique des parties sont enregistrés dans des fichiers locaux et restaurés au redémarrage.</string>
+    <string name="edit_profile_title">Modifier le profil</string>
+
+    <string name="game_two_hint">Retournez deux cartes à la fois : elles correspondent si les deux ont la même valeur</string>
+    <string name="game_three_hint">Retournez trois cartes à la fois : elles correspondent si les trois ont la même valeur</string>
+    <string name="history_button">Historique</string>
+    <string name="history_title_two">Historique des parties de paires</string>
+    <string name="history_title_three">Historique des parties de triplets</string>
+    <string name="history_empty">Aucune partie terminée. Le score est enregistré dans un fichier local à la fin d\'une partie.</string>
+    <string name="history_summary_format">Meilleur score %1$d · %2$d parties jouées</string>
+    <string name="history_summary_empty">Aucun historique</string>
+    <string name="history_record_format">%1$s · %2$d points · %3$d cartes</string>
+    <string name="history_close">Fermer</string>
+    <string name="game_over_new_record">Nouveau record ! Score : %1$d</string>
+
+    <!-- ==================== TP 4 : profil et jeu de cartes ==================== -->
+    <string name="avatar_desc">Avatar du joueur</string>
+    <string name="label_name">Nom :</string>
+    <string name="label_gender">Sexe :</string>
+    <string name="label_student_id">Numéro d\'étudiant :</string>
+    <string name="label_phone">Téléphone :</string>
+    <string name="label_email">Courriel :</string>
+    <string name="label_hobbies">Loisirs :</string>
+    <string name="label_high_score">Meilleur score :</string>
+    <string name="score_points_format">%1$d points</string>
+    <string name="edit_profile">Modifier le profil</string>
+    <string name="open_card_game">Jeu de cartes</string>
+    <string name="hobbies_none">Aucun</string>
+
+    <string name="gender_male">Homme</string>
+    <string name="gender_female">Femme</string>
+    <string name="gender_title">Sexe</string>
+    <string name="hobbies_title">Loisirs</string>
+    <string name="hobby_travel">Voyage</string>
+    <string name="hobby_reading">Lecture</string>
+    <string name="hobby_game">Jeux</string>
+    <string name="hobby_shopping">Shopping</string>
+
+    <string name="person_info_title">Modifier le profil</string>
+    <string name="avatar_change">Changer l\'avatar</string>
+    <string name="avatar_tip">Touchez le bouton appareil photo pour choisir un nouvel avatar dans la galerie</string>
+    <string name="name_hint">Nom</string>
+    <string name="student_id_hint">Numéro d\'étudiant</string>
+    <string name="phone_hint">Numéro de téléphone</string>
+    <string name="email_hint">Adresse électronique</string>
+    <string name="save">Enregistrer</string>
+    <string name="profile_saved">Profil enregistré</string>
+    <string name="error_name_required">Veuillez saisir votre nom</string>
+    <string name="error_student_id_required">Veuillez saisir votre numéro d\'étudiant</string>
+    <string name="error_phone_required">Veuillez saisir votre numéro de téléphone</string>
+    <string name="error_phone_invalid">Numéro de téléphone invalide</string>
+    <string name="error_email_required">Veuillez saisir votre adresse électronique</string>
+    <string name="error_email_invalid">Adresse électronique invalide</string>
+
+    <string name="card_game_title">Jeu de cartes</string>
+    <string name="score_label">Score</string>
+    <string name="reset_game">Réinitialiser</string>
+    <string name="exit">Quitter</string>
+    <string name="game_over_title">Partie terminée</string>
+    <string name="game_over_message">Score : %1$d</string>
+    <string name="play_again">Rejouer</string>
+
+    <string name="card_desc_back">Carte %1$d, face cachée</string>
+    <string name="card_desc_chosen">Carte %1$d, %2$s, retournée</string>
+    <string name="card_desc_matched">Carte %1$d, %2$s, associée</string>
 </resources>

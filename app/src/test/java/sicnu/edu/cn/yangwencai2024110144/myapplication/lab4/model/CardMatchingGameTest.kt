@@ -6,10 +6,85 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 /**
- * 三张牌翻牌游戏模型测试。
+ * 翻牌游戏模型测试，覆盖 2 张牌和三张牌两种玩法。
  * 使用 withCards 构造确定的牌组，避免随机发牌导致断言时好时坏。
  */
 class CardMatchingGameTest {
+
+    @Test
+    fun twoCardGameMatchesPairAndAwardsBonus() {
+        val game = CardMatchingGame.withCards(
+            listOf(
+                Card(suit = "♥", rank = "A"),
+                Card(suit = "♦", rank = "A")
+            ),
+            cardsInMatch = 2
+        )
+
+        game.chooseCardAtIndex(0)
+        assertEquals(-1, game.score)
+        assertFalse(game.cardAtIndex(0).isMatched)
+
+        game.chooseCardAtIndex(1)
+        // 两次翻牌共 -2；配对得 4 × 4 = 16，最终 14
+        assertEquals(14, game.score)
+        assertTrue(game.cardAtIndex(0).isMatched)
+        assertTrue(game.cardAtIndex(1).isMatched)
+        assertTrue(game.isGameOver)
+    }
+
+    @Test
+    fun twoCardMismatchPenalizesAndFlipsBothCardsBack() {
+        val game = CardMatchingGame.withCards(
+            listOf(
+                Card(suit = "♥", rank = "A"),
+                Card(suit = "♦", rank = "K")
+            ),
+            cardsInMatch = 2
+        )
+
+        game.chooseCardAtIndex(0)
+        game.chooseCardAtIndex(1)
+
+        // -1 -1（翻两张）- 2（不匹配）= -4
+        assertEquals(-4, game.score)
+        assertFalse(game.cardAtIndex(0).isChosen)
+        assertFalse(game.cardAtIndex(1).isChosen)
+        assertTrue(game.isGameOver)
+    }
+
+    @Test
+    fun twoCardDealUsesPairsAndEveryGroupCanMatch() {
+        val game = CardMatchingGame(16, cardsInMatch = 2)
+
+        assertEquals(16, game.numberOfCards)
+        assertFalse(game.isGameOver)
+        val rankCounts = (0 until game.numberOfCards)
+            .groupingBy { game.cardAtIndex(it).rank }
+            .eachCount()
+        assertEquals(8, rankCounts.size)
+        assertTrue(rankCounts.values.all { it == 2 })
+    }
+
+    @Test
+    fun twoCardGameJudgesAsSoonAsTwoCardsAreChosen() {
+        val game = CardMatchingGame.withCards(
+            listOf(
+                Card(suit = "♥", rank = "A"),
+                Card(suit = "♦", rank = "A")
+            ),
+            cardsInMatch = 2
+        )
+
+        game.chooseCardAtIndex(0)
+        assertTrue(game.cardAtIndex(0).isChosen)
+        assertFalse(game.cardAtIndex(0).isMatched)
+        assertFalse(game.isGameOver)
+
+        game.chooseCardAtIndex(1)
+        assertTrue(game.cardAtIndex(0).isMatched)
+        assertTrue(game.isGameOver)
+    }
 
     @Test
     fun newGameStartsWithZeroScoreAndHiddenCards() {

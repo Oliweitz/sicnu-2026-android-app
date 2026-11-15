@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    横屏屏幕高度有限，一局改为 12 张牌（4 组三张牌），排成一行，
-    保证所有牌都能完整显示，不需要上下滚动。
-    旋转屏幕时 Activity 会重新创建，从而按当前方向读取不同的牌数。
+    横屏屏幕高度有限，两种玩法都减少牌数并增加每行张数：
+      - 2 张牌玩法：12 张（6 组两张牌），排成一行；
+      - 3 张牌玩法：12 张（4 组三张牌），排成一行。
+    Fragment 重新创建时会按当前方向读取资源，自动使用这里的值。
 -->
 <resources>
+    <integer name="two_card_count">12</integer>
+    <integer name="two_card_grid_span_count">12</integer>
+
     <integer name="game_card_count">12</integer>
     <integer name="game_grid_span_count">12</integer>
 </resources>
