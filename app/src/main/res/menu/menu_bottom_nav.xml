@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    实验六：三个 Fragment 的底部导航。
+    个人信息、2 张牌翻牌游戏、3 张牌翻牌游戏。
+-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_nav_profile"
+        android:title="@string/tab_profile" />
+
+    <item
+        android:id="@+id/nav_two_cards"
+        android:icon="@drawable/ic_nav_two_cards"
+        android:title="@string/tab_two_cards" />
+
+    <item
+        android:id="@+id/nav_three_cards"
+        android:icon="@drawable/ic_nav_three_cards"
+        android:title="@string/tab_three_cards" />
+</menu>

@@ -1,30 +1,32 @@
 package sicnu.edu.cn.yangwencai2024110144.myapplication
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import sicnu.edu.cn.yangwencai2024110144.myapplication.databinding.ActivityMainBinding
-import sicnu.edu.cn.yangwencai2024110144.myapplication.lab4.CardGameActivity
-import sicnu.edu.cn.yangwencai2024110144.myapplication.lab4.PersonInfoActivity
+import sicnu.edu.cn.yangwencai2024110144.myapplication.lab6.ProfileFragment
+import sicnu.edu.cn.yangwencai2024110144.myapplication.lab6.ThreeCardGameFragment
+import sicnu.edu.cn.yangwencai2024110144.myapplication.lab6.TwoCardGameFragment
 import sicnu.edu.cn.yangwencai2024110144.myapplication.player.PlayerRepository
-import sicnu.edu.cn.yangwencai2024110144.myapplication.player.labelRes
-import sicnu.edu.cn.yangwencai2024110144.myapplication.player.showAvatar
 
 /**
- * 实验四：翻牌游戏应用的主 Activity。
+ * 实验六：多 Fragment 应用的主 Activity。
  *
- * 显示玩家信息（姓名、性别、学号、电话、邮箱、爱好、当前最高分），
- * 并通过两个按钮进入信息修改和翻牌游戏界面。
+ * 一个 Activity 承载三个 Fragment：
+ *   1. [ProfileFragment]：个人信息，可修改并序列化保存；
+ *   2. [TwoCardGameFragment]：2 张牌翻牌游戏，历史记录序列化保存；
+ *   3. [ThreeCardGameFragment]：3 张牌翻牌游戏，历史记录序列化保存。
  *
- * 数据只放在 [PlayerRepository] 中，返回本界面时在 onResume 里重新读取，
- * 所以修改姓名等信息后无需借助 Intent 回传。
+ * 三个 Fragment 一次性 add 进来，切换标签时只 show / hide，
+ * 因此切换标签不会丢失正在进行的牌局；旋转屏幕时 FragmentManager
+ * 会自动恢复它们，当前标签页另外保存在 [KEY_CURRENT_TAG] 中。
  */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private var currentTag = TAG_PROFILE
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,16 +34,70 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        // 把布局里的 MaterialToolbar 交给系统，选项菜单才能显示在右上角。
         setSupportActionBar(binding.toolbar)
 
-        binding.btnEditProfile.setOnClickListener {
-            startActivity(Intent(this, PersonInfoActivity::class.java))
+        if (savedInstanceState == null) {
+            addFragments()
         }
-        binding.btnOpenGame.setOnClickListener {
-            startActivity(Intent(this, CardGameActivity::class.java))
+
+        currentTag = savedInstanceState?.getString(KEY_CURRENT_TAG) ?: TAG_PROFILE
+
+        // 先恢复底部导航的选中项，再注册监听，避免初始化时重复切换。
+        binding.bottomNav.selectedItemId = menuItemForTag(currentTag)
+        binding.bottomNav.setOnItemSelectedListener { item ->
+            val tag = tagForMenuItem(item.itemId) ?: return@setOnItemSelectedListener false
+            showFragment(tag)
+            true
         }
+        showFragment(currentTag)
+    }
+
+    /** 首次创建时把三个 Fragment 都加入容器，只显示个人信息页。 */
+    private fun addFragments() {
+        val profileFragment = ProfileFragment()
+        val twoCardFragment = TwoCardGameFragment()
+        val threeCardFragment = ThreeCardGameFragment()
+
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragment_container, profileFragment, TAG_PROFILE)
+            .add(R.id.fragment_container, twoCardFragment, TAG_TWO_CARDS)
+            .add(R.id.fragment_container, threeCardFragment, TAG_THREE_CARDS)
+            .hide(twoCardFragment)
+            .hide(threeCardFragment)
+            .commitNow()
+    }
+
+    /** 只显示指定标签对应的 Fragment，其余隐藏，保证游戏状态不丢失。 */
+    private fun showFragment(tag: String) {
+        val transaction = supportFragmentManager.beginTransaction().setReorderingAllowed(true)
+        FRAGMENT_TAGS.forEach { candidate ->
+            val fragment = supportFragmentManager.findFragmentByTag(candidate) ?: return@forEach
+            if (candidate == tag) transaction.show(fragment) else transaction.hide(fragment)
+        }
+        transaction.commitNow()
+        currentTag = tag
+    }
+
+    private fun tagForMenuItem(itemId: Int): String? {
+        return when (itemId) {
+            R.id.nav_profile -> TAG_PROFILE
+            R.id.nav_two_cards -> TAG_TWO_CARDS
+            R.id.nav_three_cards -> TAG_THREE_CARDS
+            else -> null
+        }
+    }
+
+    private fun menuItemForTag(tag: String): Int {
+        return when (tag) {
+            TAG_TWO_CARDS -> R.id.nav_two_cards
+            TAG_THREE_CARDS -> R.id.nav_three_cards
+            else -> R.id.nav_profile
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(KEY_CURRENT_TAG, currentTag)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -75,31 +131,13 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
-    override fun onResume() {
-        super.onResume()
-        renderProfile()
-    }
+    private companion object {
+        const val TAG_PROFILE = "profile"
+        const val TAG_TWO_CARDS = "two_cards"
+        const val TAG_THREE_CARDS = "three_cards"
 
-    /** 把仓库里的最新数据同步到各个 TextView。 */
-    private fun renderProfile() {
-        val profile = PlayerRepository.current
+        const val KEY_CURRENT_TAG = "current_tag"
 
-        binding.ivAvatar.showAvatar(profile.avatarUri)
-        binding.tvNameValue.text = profile.name
-        binding.tvGenderValue.text = getString(profile.gender.labelRes())
-        binding.tvStudentIdValue.text = profile.studentId
-        binding.tvPhoneValue.text = profile.phone
-        binding.tvEmailValue.text = profile.email
-
-        binding.tvHobbiesValue.text = if (profile.hobbies.isEmpty()) {
-            getString(R.string.hobbies_none)
-        } else {
-            profile.hobbies
-                .sortedBy { it.ordinal }
-                .joinToString(getString(R.string.list_separator)) { getString(it.labelRes()) }
-        }
-
-        binding.tvHighScoreValue.text =
-            getString(R.string.score_points_format, profile.highScore)
+        val FRAGMENT_TAGS = listOf(TAG_PROFILE, TAG_TWO_CARDS, TAG_THREE_CARDS)
     }
 }

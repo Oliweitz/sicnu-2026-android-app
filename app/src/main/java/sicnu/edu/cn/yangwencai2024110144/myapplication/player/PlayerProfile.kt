@@ -1,10 +1,15 @@
 package sicnu.edu.cn.yangwencai2024110144.myapplication.player
 
+import java.io.Serializable
+
 /**
  * 玩家个人信息（应用级 Model）。
  *
- * 按实验要求，这些数据只在内存里保存，不写入文件；
- * 退出应用后会恢复为默认值。
+ * 实验六要求用对象序列化保存个人信息：本类实现 [Serializable]，
+ * 由 [sicnu.edu.cn.yangwencai2024110144.myapplication.lab6.storage.ProfileStore]
+ * 通过 ObjectOutputStream / ObjectInputStream 写入和读取应用私有文件。
+ *
+ * [gender] 与 [hobbies] 的枚举同样可序列化，因此整个对象可以直接写入文件。
  */
 data class PlayerProfile(
     val name: String = "",
@@ -13,9 +18,14 @@ data class PlayerProfile(
     val phone: String = "",
     val email: String = "",
     val hobbies: Set<Hobby> = emptySet(),
-    val highScore: Int = 0,
     val avatarUri: String? = null
-)
+) : Serializable {
+
+    companion object {
+        /** 序列化版本号：以后增减字段时可以控制旧文件是否还能读取。 */
+        private const val serialVersionUID = 1L
+    }
+}
 
 enum class Gender {
     MALE,

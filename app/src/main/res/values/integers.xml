@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    竖屏：24 张牌，每行 4 张，共 6 行。
+    竖屏牌数：
+      - 2 张牌玩法：16 张（8 组两张牌），每行 4 张，共 4 行；
+      - 3 张牌玩法：24 张（8 组三张牌），每行 4 张，共 6 行。
     横屏覆盖值见 values-land/integers.xml。
 -->
 <resources>
+    <integer name="two_card_count">16</integer>
+    <integer name="two_card_grid_span_count">4</integer>
+
     <integer name="game_card_count">24</integer>
     <integer name="game_grid_span_count">4</integer>
 </resources>

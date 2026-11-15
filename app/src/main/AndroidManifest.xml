@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
-        实验四：翻牌游戏应用，共 3 个 Activity。
+        实验六：多 Fragment 应用。
+        主 Activity 承载个人信息、2 张牌游戏、3 张牌游戏三个 Fragment；
         头像通过系统文档选择器获取，不需要申请存储或相机权限。
+        个人信息和游戏历史写入应用私有目录，不需要外部存储权限。
     -->
     <application
         android:allowBackup="true"
@@ -15,31 +17,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
 
-        <!-- 主界面：应用标题就是姓名 + 学号 -->
+        <!-- 主界面：应用标题就是姓名 + 学号，内部用底部导航切换三个 Fragment -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!-- 二级界面一：信息修改 -->
-        <activity
-            android:name=".lab4.PersonInfoActivity"
-            android:exported="false"
-            android:label="@string/person_info_title"
-            android:parentActivityName=".MainActivity"
-            android:windowSoftInputMode="adjustResize" />
-
-        <!-- 二级界面二：翻牌游戏 -->
-        <activity
-            android:name=".lab4.CardGameActivity"
-            android:exported="false"
-            android:label="@string/card_game_title"
-            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>
