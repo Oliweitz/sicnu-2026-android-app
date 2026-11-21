@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 播放列表左侧的序号圆底，适配器会按选中状态改 backgroundTint -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="@color/avatar_bg" />
+</shape>

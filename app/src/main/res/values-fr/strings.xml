@@ -61,7 +61,7 @@
     <string name="game_hint">Retournez trois cartes à la fois : elles correspondent si les trois ont la même valeur</string>
     <string name="menu_about">À propos</string>
     <string name="about_title">À propos de l\'application</string>
-    <string name="about_message">Application : %1$s\nAuteur : %2$s\nNuméro d\'étudiant : %3$s\n\nTP 6 : refonte en plusieurs fragments avec sauvegarde du profil et de l\'historique par sérialisation d\'objets.</string>
+    <string name="about_message">Application : %1$s\nAuteur : %2$s\nNuméro d\'étudiant : %3$s\n\nTP 7 : lire la musique locale avec ContentResolver, la lire avec un MediaPlayer dans un Service lié et afficher le titre en cours dans une notification.</string>
 
     <!-- ==================== TP 6 : fragments et sérialisation d\'objets ==================== -->
     <string name="tab_profile">Profil</string>
@@ -135,4 +135,32 @@
     <string name="card_desc_back">Carte %1$d, face cachée</string>
     <string name="card_desc_chosen">Carte %1$d, %2$s, retournée</string>
     <string name="card_desc_matched">Carte %1$d, %2$s, associée</string>
+
+    <!-- ==================== TP 7 : lecteur de musique ==================== -->
+    <string name="tab_music">Musique</string>
+    <string name="music_player_title">Lecteur de musique</string>
+    <string name="music_nothing_playing">Aucune chanson sélectionnée</string>
+    <string name="music_unknown_artist">Artiste inconnu</string>
+    <string name="music_unknown_song">Chanson inconnue</string>
+    <string name="music_playlist_title">Playlist</string>
+    <string name="music_song_count">%1$d titres</string>
+    <string name="music_play">Lecture</string>
+    <string name="music_pause">Pause</string>
+    <string name="music_stop">Arrêter</string>
+    <string name="music_previous">Précédent</string>
+    <string name="music_next">Suivant</string>
+    <string name="music_refresh">Actualiser la liste</string>
+    <string name="music_no_songs_title">Aucun fichier audio trouvé</string>
+    <string name="music_no_songs_hint">Copiez des fichiers audio dans le dossier Music de l\'appareil, puis touchez Actualiser.</string>
+    <string name="music_permission_title">Autorisation de lecture requise</string>
+    <string name="music_permission_hint">Android 13 et versions ultérieures exigent l\'autorisation Musique et audio pour lire les fichiers locaux. Android 12 et versions antérieures utilisent l\'autorisation de stockage.</string>
+    <string name="music_grant_permission">Autoriser</string>
+    <string name="music_permission_denied">L\'autorisation d\'accéder à la musique a été refusée, la playlist ne peut pas être chargée</string>
+    <string name="music_notification_permission_denied">L\'autorisation de notification a été refusée, le titre de la chanson ne s\'affichera pas dans la barre de notifications</string>
+    <string name="music_notification_channel">Lecture de musique</string>
+    <string name="music_notification_channel_desc">Affiche le titre de la chanson en cours</string>
+    <string name="music_notification_artist">Artiste : %1$s</string>
+    <string name="music_notification_paused">En pause</string>
+    <string name="music_playback_error">Impossible de lire cette chanson. Vérifiez que le fichier existe toujours.</string>
+    <string name="music_service_error">Impossible de se connecter au service de musique</string>
 </resources>

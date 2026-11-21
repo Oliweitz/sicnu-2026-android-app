@@ -1,5 +1,6 @@
 package sicnu.edu.cn.yangwencai2024110144.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -9,6 +10,7 @@ import sicnu.edu.cn.yangwencai2024110144.myapplication.databinding.ActivityMainB
 import sicnu.edu.cn.yangwencai2024110144.myapplication.lab6.ProfileFragment
 import sicnu.edu.cn.yangwencai2024110144.myapplication.lab6.ThreeCardGameFragment
 import sicnu.edu.cn.yangwencai2024110144.myapplication.lab6.TwoCardGameFragment
+import sicnu.edu.cn.yangwencai2024110144.myapplication.lab7.MusicPlayerActivity
 import sicnu.edu.cn.yangwencai2024110144.myapplication.player.PlayerRepository
 
 /**
@@ -22,6 +24,9 @@ import sicnu.edu.cn.yangwencai2024110144.myapplication.player.PlayerRepository
  * 三个 Fragment 一次性 add 进来，切换标签时只 show / hide，
  * 因此切换标签不会丢失正在进行的牌局；旋转屏幕时 FragmentManager
  * 会自动恢复它们，当前标签页另外保存在 [KEY_CURRENT_TAG] 中。
+ *
+ * 实验七在底部导航增加了“音乐”入口。音乐播放器是独立的 [MusicPlayerActivity]，
+ * 需要绑定 MusicPlayerService 拿 Binder，因此不作为 Fragment 放入容器。
  */
 class MainActivity : AppCompatActivity() {
 
@@ -45,6 +50,11 @@ class MainActivity : AppCompatActivity() {
         // 先恢复底部导航的选中项，再注册监听，避免初始化时重复切换。
         binding.bottomNav.selectedItemId = menuItemForTag(currentTag)
         binding.bottomNav.setOnItemSelectedListener { item ->
+            if (item.itemId == R.id.nav_music) {
+                startActivity(Intent(this, MusicPlayerActivity::class.java))
+                // 返回 false：音乐是独立页面，返回时底部导航仍停在上一个标签
+                return@setOnItemSelectedListener false
+            }
             val tag = tagForMenuItem(item.itemId) ?: return@setOnItemSelectedListener false
             showFragment(tag)
             true

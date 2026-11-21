@@ -61,7 +61,7 @@
     <string name="game_hint">Flip three cards at a time: they match when all three ranks are the same</string>
     <string name="menu_about">About</string>
     <string name="about_title">About this app</string>
-    <string name="about_message">App: %1$s\nAuthor: %2$s\nStudent ID: %3$s\n\nLab 6: a multi-fragment refactor that saves the profile and game history with object serialization.</string>
+    <string name="about_message">App: %1$s\nAuthor: %2$s\nStudent ID: %3$s\n\nLab 7: read local music with ContentResolver, play it with a MediaPlayer inside a bound Service, and show the current song in a Notification.</string>
 
     <!-- ==================== Lab 6: fragments and object serialization ==================== -->
     <string name="tab_profile">Profile</string>
@@ -135,4 +135,32 @@
     <string name="card_desc_back">Card %1$d, face down</string>
     <string name="card_desc_chosen">Card %1$d, %2$s, face up</string>
     <string name="card_desc_matched">Card %1$d, %2$s, matched</string>
+
+    <!-- ==================== Lab 7: music player ==================== -->
+    <string name="tab_music">Music</string>
+    <string name="music_player_title">Music Player</string>
+    <string name="music_nothing_playing">No song selected</string>
+    <string name="music_unknown_artist">Unknown artist</string>
+    <string name="music_unknown_song">Unknown song</string>
+    <string name="music_playlist_title">Playlist</string>
+    <string name="music_song_count">%1$d songs</string>
+    <string name="music_play">Play</string>
+    <string name="music_pause">Pause</string>
+    <string name="music_stop">Stop</string>
+    <string name="music_previous">Previous</string>
+    <string name="music_next">Next</string>
+    <string name="music_refresh">Refresh music list</string>
+    <string name="music_no_songs_title">No music files found</string>
+    <string name="music_no_songs_hint">Copy music files to the Music folder on this device, then tap Refresh.</string>
+    <string name="music_permission_title">Music permission required</string>
+    <string name="music_permission_hint">Android 13 and later need the Music and audio permission to read local music files. Android 12 and earlier use the storage permission.</string>
+    <string name="music_grant_permission">Grant permission</string>
+    <string name="music_permission_denied">Music permission was denied, so the playlist cannot be loaded</string>
+    <string name="music_notification_permission_denied">Notification permission was denied, so the current song cannot appear in the notification shade</string>
+    <string name="music_notification_channel">Music playback</string>
+    <string name="music_notification_channel_desc">Shows the title of the current song</string>
+    <string name="music_notification_artist">Artist: %1$s</string>
+    <string name="music_notification_paused">Paused</string>
+    <string name="music_playback_error">Could not play this song. Please check that the file still exists.</string>
+    <string name="music_service_error">Could not connect to the music service</string>
 </resources>
