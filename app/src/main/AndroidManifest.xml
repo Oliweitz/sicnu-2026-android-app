@@ -2,11 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
-        实验六：多 Fragment 应用。
-        主 Activity 承载个人信息、2 张牌游戏、3 张牌游戏三个 Fragment；
-        头像通过系统文档选择器获取，不需要申请存储或相机权限。
-        个人信息和游戏历史写入应用私有目录，不需要外部存储权限。
+        实验七：在实验六的 Fragment 应用上增加音乐播放器。
+        Android 13（API 33）起读取音乐改用 READ_MEDIA_AUDIO；
+        Android 12 及以下仍用 READ_EXTERNAL_STORAGE，通过 maxSdkVersion 限定。
+        通知栏显示歌曲名还需要 POST_NOTIFICATIONS 运行时权限。
     -->
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -28,6 +34,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--
+            实验七：音乐播放器。
+            播放逻辑在 MusicPlayerService 中，Activity 只负责绑定服务和显示；
+            configChanges 避免旋转屏幕时 Activity 重建导致解除绑定、音乐中断。
+        -->
+        <activity
+            android:name=".lab7.MusicPlayerActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- 实验七：音乐播放服务。只允许应用内绑定，不对外导出。 -->
+        <service
+            android:name=".lab7.MusicPlayerService"
+            android:exported="false" />
     </application>
 
 </manifest>

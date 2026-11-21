@@ -16,6 +16,8 @@
     <color name="card_surface">#FFFFFFFF</color>
     <color name="text_primary">#FF1B1D22</color>
     <color name="text_secondary">#FF5F6472</color>
+    <!-- 实验七：深色工具栏上的副标题 -->
+    <color name="text_on_primary_secondary">#CCFFFFFF</color>
     <color name="divider">#FFE6E8F0</color>
     <color name="avatar_bg">#FFE8ECFB</color>
 

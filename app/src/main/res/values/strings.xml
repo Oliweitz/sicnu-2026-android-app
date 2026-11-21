@@ -162,7 +162,7 @@
     <string name="menu_about">关于</string>
     <string name="about_title">关于本应用</string>
     <!-- %1$s 应用名称，%2$s 姓名，%3$s 学号 -->
-    <string name="about_message">应用名称：%1$s\n作者：%2$s\n学号：%3$s\n\n实验六：使用 Fragment 重构应用，并通过对象序列化保存个人信息与游戏历史。</string>
+    <string name="about_message">应用名称：%1$s\n作者：%2$s\n学号：%3$s\n\n实验七：使用 ContentResolver 读取本机音乐，在 Service 中用 MediaPlayer 播放，并通过 Notification 在通知栏显示当前歌曲名。</string>
 
     <!-- ==================== 实验六：Fragment 与对象序列化 ==================== -->
     <string name="tab_profile">个人信息</string>
@@ -186,4 +186,33 @@
     <string name="history_record_format">%1$s · %2$d 分 · %3$d 张牌</string>
     <string name="history_close">关闭</string>
     <string name="game_over_new_record">新纪录！本局得分：%1$d</string>
+
+    <!-- ==================== 实验七：音乐播放器 ==================== -->
+    <string name="tab_music">音乐</string>
+    <string name="music_player_title">音乐播放器</string>
+    <string name="music_nothing_playing">未选择歌曲</string>
+    <string name="music_unknown_artist">未知艺术家</string>
+    <string name="music_unknown_song">未知歌曲</string>
+    <string name="music_playlist_title">播放列表</string>
+    <string name="music_song_count">共 %1$d 首</string>
+    <string name="music_time_zero" translatable="false">0:00</string>
+    <string name="music_play">播放</string>
+    <string name="music_pause">暂停</string>
+    <string name="music_stop">停止</string>
+    <string name="music_previous">上一首</string>
+    <string name="music_next">下一首</string>
+    <string name="music_refresh">刷新音乐列表</string>
+    <string name="music_no_songs_title">没有找到音乐文件</string>
+    <string name="music_no_songs_hint">请先把音乐文件复制到设备的 Music 文件夹，再点击刷新。</string>
+    <string name="music_permission_title">需要读取音乐的权限</string>
+    <string name="music_permission_hint">Android 13 及以上需要音乐和音频权限才能读取本机音乐文件；Android 12 及以下使用存储权限。</string>
+    <string name="music_grant_permission">授予权限</string>
+    <string name="music_permission_denied">未获得音乐读取权限，无法加载播放列表</string>
+    <string name="music_notification_permission_denied">未获得通知权限，歌曲名将无法显示在通知栏</string>
+    <string name="music_notification_channel">音乐播放</string>
+    <string name="music_notification_channel_desc">显示当前播放歌曲的名称</string>
+    <string name="music_notification_artist">艺术家：%1$s</string>
+    <string name="music_notification_paused">已暂停</string>
+    <string name="music_playback_error">无法播放这首歌曲，请检查文件是否仍然存在</string>
+    <string name="music_service_error">无法连接音乐播放服务</string>
 </resources>

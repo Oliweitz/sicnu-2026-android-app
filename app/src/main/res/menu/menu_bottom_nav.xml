@@ -2,6 +2,7 @@
 <!--
     实验六：三个 Fragment 的底部导航。
     个人信息、2 张牌翻牌游戏、3 张牌翻牌游戏。
+    实验七追加“音乐”入口，点击后打开独立的 MusicPlayerActivity。
 -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -19,4 +20,9 @@
         android:id="@+id/nav_three_cards"
         android:icon="@drawable/ic_nav_three_cards"
         android:title="@string/tab_three_cards" />
+
+    <item
+        android:id="@+id/nav_music"
+        android:icon="@drawable/ic_nav_music"
+        android:title="@string/tab_music" />
 </menu>
